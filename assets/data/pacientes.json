@@ -1,0 +1,121 @@
+[
+    {
+        "id_pac": "pac_01",
+        "nombre": "Hector Fuentes",
+        "numero": "+569 1234 5678",
+        "citas_agendadas": [
+            {
+                "id_doc": "doc_01",
+                "fecha": "09-12-2024",
+                "hora_agendada": "10:00",
+                "hora_atendida": "10:30",
+                "tiempo_espera": 30
+            },
+            {
+                "id_doc": "doc_04",
+                "fecha": "11-12-2024",
+                "hora_agendada": "15:00",
+                "hora_atendida": "15:15",
+                "tiempo_espera": 15
+            },
+            {
+                "id_doc": "doc_02",
+                "fecha": "13-12-2024",
+                "hora_agendada": "17:00",
+                "hora_atendida": "17:30",
+                "tiempo_espera": 30
+           }
+        ]
+    },
+    {
+        "id_pac": "pac_02",
+        "nombre": "Carla González",
+        "numero": "+569 8765 4321",
+        "citas_agendadas": [
+            {
+                "id_doc": "doc_03",
+                "fecha": "09-12-2024",
+                "hora_agendada": "11:00",
+                "hora_atendida": "11:30",
+                "tiempo_espera": 30
+
+            },
+            {
+                "id_doc": "doc_05",
+                "fecha": "11-12-2024",
+                "hora_agendada": "16:00",
+                "hora_atendida": "16:30",
+                "tiempo_espera": 30
+            }
+        ]
+    },
+    {
+        "id_pac": "pac_03",
+        "nombre": "Luis Herrera",
+        "numero": "+569 2345 6789",
+        "citas_agendadas": [
+            {
+                "id_doc": "doc_05",
+                "fecha": "09-12-2024",
+                "hora_agendada": "12:00",
+                "hora_atendida": "12:30",
+                "tiempo_espera": 30
+            },
+            {
+                "id_doc": "doc_02",
+                "fecha": "12-12-2024",
+                "hora_agendada": "09:00",
+                "hora_atendida": "09:10",
+                "tiempo_espera": 10
+            }
+        ]
+    },
+    {
+        "id_pac": "pac_04",
+        "nombre": "María López",
+        "numero": "+569 3456 7890",
+        "citas_agendadas": [
+            {
+                "id_doc": "doc_02",
+                "fecha": "10-12-2024",
+                "hora_agendada": "09:00",
+                "hora_atendida": "09:20",
+                "tiempo_espera": 20
+            },
+            {
+                "id_doc": "doc_01",
+                "fecha": "12-12-2024",
+                "hora_agendada": "13:00",
+                "hora_atendida": "13:30",
+                "tiempo_espera": 30
+            }
+        ]
+    },
+    {
+        "id_pac": "pac_05",
+        "nombre": "Juan Morales",
+        "numero": "+569 4567 8901",
+        "citas_agendadas": [
+            {
+                "id_doc": "doc_01",
+                "fecha": "10-12-2024",
+                "hora_agendada": "14:00",
+                "hora_atendida": "14:25",
+                "tiempo_espera": 25
+            },
+            {
+                "id_doc": "doc_03",
+                "fecha": "13-12-2024",
+                "hora_agendada": "10:00",
+                "hora_atendida": "10:15",
+                "tiempo_espera": 15
+            }
+        ]
+    },
+    {
+        "id_pac": "pac_06",
+        "nombre": "Ana Castro",
+        "numero": "+569 5678 9012",
+        "citas_agendadas": []
+    }
+]

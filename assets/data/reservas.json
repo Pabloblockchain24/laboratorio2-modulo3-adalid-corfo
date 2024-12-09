@@ -1,0 +1,101 @@
+[
+    {
+      "id_res": "res_01",
+      "id_pac": "pac_01",
+      "id_doc": "doc_01",
+      "fecha": "09-12-2024",
+      "hora_agendada": "10:00",
+      "hora_atendida": "10:30",
+      "tiempo_espera": 30
+    },
+    {
+        "id_res": "res_02",
+        "id_pac": "pac_02",
+        "id_doc": "doc_03",
+        "fecha": "09-12-2024",
+        "hora_agendada": "11:00",
+        "hora_atendida": "11:30",
+        "tiempo_espera": 30
+    },
+    {
+        "id_res": "res_03",
+        "id_pac": "pac_03",
+        "id_doc": "doc_05",
+        "fecha": "09-12-2024",
+        "hora_agendada": "12:00",
+        "hora_atendida": "12:30",
+        "tiempo_espera": 30
+    },
+    {
+        "id_res": "res_04",
+        "id_pac": "pac_04",
+        "id_doc": "doc_02",
+        "fecha": "10-12-2024",
+        "hora_agendada": "09:00",
+        "hora_atendida": "09:20",
+        "tiempo_espera": 20
+    },
+    {
+        "id_res": "res_05",
+        "id_pac": "pac_05",
+        "id_doc": "doc_01",
+        "fecha": "10-12-2024",
+        "hora_agendada": "14:00",
+        "hora_atendida": "14:25",
+        "tiempo_espera": 25
+    },
+    {
+        "id_res": "res_06",
+        "id_pac": "pac_01",
+        "id_doc": "doc_04",
+        "fecha": "11-12-2024",
+        "hora_agendada": "15:00",
+        "hora_atendida": "15:15",
+        "tiempo_espera": 15
+    },
+    {
+        "id_res": "res_07",
+        "id_pac": "pac_02",
+        "id_doc": "doc_05",
+        "fecha": "11-12-2024",
+        "hora_agendada": "16:00",
+        "hora_atendida": "16:30",
+        "tiempo_espera": 30
+    },
+    {
+        "id_res": "res_08",
+        "id_pac": "pac_03",
+        "id_doc": "doc_02",
+        "fecha": "12-12-2024",
+        "hora_agendada": "09:00",
+        "hora_atendida": "09:10",
+        "tiempo_espera": 10
+    },
+    {
+        "id_res": "res_09",
+        "id_pac": "pac_04",
+        "id_doc": "doc_01",
+        "fecha": "12-12-2024",
+        "hora_agendada": "13:00",
+        "hora_atendida": "13:30",
+        "tiempo_espera": 30
+    },
+    {
+        "id_res": "res_10",
+        "id_pac": "pac_05",
+        "id_doc": "doc_03",
+        "fecha": "13-12-2024",
+        "hora_agendada": "10:00",
+        "hora_atendida": "10:15",
+        "tiempo_espera": 15
+    },
+    {
+        "id_res": "res_11",
+        "id_pac": "pac_01",
+        "id_doc": "doc_02",
+        "fecha": "13-12-2024",
+        "hora_agendada": "17:00",
+        "hora_atendida": "17:30",
+        "tiempo_espera": 30
+    }
+]
