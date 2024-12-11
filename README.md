@@ -441,9 +441,4 @@ Este ejemplo ilustra cómo reutilizar y extender funcionalidades en JavaScript m
 **Imagen que muestra la ejecución por consola de subclase cirujano**
 ![Evento de un nuevo paciente](./assets/img/screenshot_clases.jpg)
 
-## Créditos
-
-- Las imágenes utilizadas en este proyecto fueron obtenidas desde https://www.chatgpt.com
-
-
 
