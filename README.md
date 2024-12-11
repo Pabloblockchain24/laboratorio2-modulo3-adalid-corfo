@@ -416,9 +416,30 @@ Calcula a través de una composición de funciones el precio final de las consul
 
 ## Explicación uso de eventos y asincronía.
 
+**Eventos:**
+Formulario de contacto: Se utiliza un evento submit para evitar el envío por defecto, recoger los datos del formulario, mostrar una alerta y resetear el formulario.
+Evento personalizado: Se crea y dispara un evento nuevoPaciente después de 5 segundos, simulando la llegada de un nuevo paciente y mostrando una notificación con sus datos.
+
+**Asincronía:**
+async/await: La función fetchDoctores utiliza async/await para hacer una llamada HTTP a un archivo JSON. Si la respuesta es exitosa, se devuelve los datos; si ocurre un error, se captura con try/catch y se muestra en la consola.
+
+**Imagen que muestra la ejecución del evento que envía un alert de un nuevo paciente**
+![Evento de un nuevo paciente](./assets/img/screenshot_alert.jpg)
 
 ## Detalles de las clases, herencia y polimorfismo.
 
+**Clases:**
+Se define una clase Doctor con propiedades como nombre, especialidad, _anios_experiencia, y pacientes, además de métodos como obtenerInformacion y calcularPacientesAtendidos. También se incluyen un getter y setter para la propiedad aniosExperiencia.
+
+**Herencia:**
+Se crea una subclase Cirujano que extiende la clase Doctor usando super() para heredar las propiedades y métodos de la clase base.
+
+**Polimorfismo:**
+En la subclase Cirujano, el método obtenerInformacion se sobrescribe para proporcionar información sobre las cirugías realizadas en lugar de los pacientes atendidos, demostrando el polimorfismo, donde un método en una subclase tiene una implementación diferente a la de la clase base.
+Este ejemplo ilustra cómo reutilizar y extender funcionalidades en JavaScript mediante herencia y cómo cambiar el comportamiento de un método usando polimorfismo.
+
+**Imagen que muestra la ejecución por consola de subclase cirujano**
+![Evento de un nuevo paciente](./assets/img/screenshot_clases.jpg)
 
 ## Créditos
 

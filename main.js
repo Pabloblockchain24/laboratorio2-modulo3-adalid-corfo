@@ -27,7 +27,7 @@ async function renderizarDoctores(doctores) {
         anios_experiencia,
         descripcion        
       } = doctor
-      // console.log('El doctor a renderizar usando desestructuring es', doctor)
+      console.log('El doctor a renderizar usando desestructuring es', doctor)
       const cardHTML = `
         <div class="col profesionales">
           <div class="card" >
@@ -49,12 +49,12 @@ async function filtrarEquipo(doctores) {
   try {
     const doctorOriginal = doctores[0];
     const doctorClonado = { ...doctorOriginal, nombre: "Dr. Clonado", anios_experiencia: 99 };
-    // console.log('Doctor Original:', doctorOriginal);
-    // console.log('Doctor Clonado:', doctorClonado);
+    console.log('Doctor Original:', doctorOriginal);
+    console.log('Doctor Clonado:', doctorClonado);
 
     const serviciosDisponibles = { servicios: ["Cirugía", "Consultas", "Emergencias"] };
     const doctorFusionado = { ...doctorOriginal, ...serviciosDisponibles };
-    // console.log('Doctor Fusionado:', doctorFusionado);
+    console.log('Doctor Fusionado:', doctorFusionado);
 
     const filtroExperiencia = document.getElementById('filtroExperiencia').value;
     const filtroServicio = document.getElementById('filtroServicio').value;
@@ -69,11 +69,11 @@ async function filtrarEquipo(doctores) {
     doctores.sort((a, b) => b.anios_experiencia - a.anios_experiencia);
      
     const doctoresString = JSON.stringify(doctores, null, 2);
-    // console.log('Doctores filtrados como JSON:', doctoresString);
+    console.log('Doctores filtrados como JSON:', doctoresString);
 
     renderizarDoctores(doctores);
   } catch (error) {
-    // console.error('Error al cargar los doctores:', error);
+    console.error('Error al cargar los doctores:', error);
   }
 }
 
@@ -81,20 +81,20 @@ async function filtrarEquipo(doctores) {
 
 function agregarDoctor(doctores, nuevoDoctor) {
   doctores.push(nuevoDoctor);
-  // console.log('Agregue doctor')
+  console.log('Agregue doctor')
 }
 
 function eliminarDoctor(doctores) {
   doctorEliminado = doctores.pop();
-  // console.log('Doctor eliminado', doctorEliminado)
+  console.log('Doctor eliminado', doctorEliminado)
 }
 //Algoritmo de busqueda
 function buscarDoctor(doctores, doctorABuscar) {
   const doctorBuscado = doctores.find(doctor => doctor.nombre === doctorABuscar);
   if (doctorBuscado) {
-    // console.log('Doctor encontrado:', doctorBuscado);
+    console.log('Doctor encontrado:', doctorBuscado);
   } else {
-    // console.log('Doctor no encontrado');
+    console.log('Doctor no encontrado');
   }
 } 
 
@@ -120,14 +120,14 @@ async function cargarDoctores() {
     
     filtrarEquipo(doctores);
   } catch (error) {
-    // console.error('Error al cargar los doctores:', error);
+    console.error('Error al cargar los doctores:', error);
   }
 }
 
 // Aqui crearemos citas
 function agregarCita(citas, nuevaCita) {
   citas.push(nuevaCita);
-  // console.log('Agregue cita', nuevaCita)
+  console.log('Agregue cita', nuevaCita)
 }
 
 function manejarPila() {
@@ -138,8 +138,8 @@ function manejarPila() {
   agregarCita(citas, 'cita4')
   agregarCita(citas, 'cita5')
 
-  // console.log('La ultima agendada es', citas[citas.length - 1])
-  // console.log('La proxima cita a atender es', citas.shift())
+  console.log('La ultima agendada es', citas[citas.length - 1])
+  console.log('La proxima cita a atender es', citas.shift())
 }
 
 function manejarCola(){
@@ -148,7 +148,7 @@ function manejarCola(){
   colaContacto.push('contacto2')
   colaContacto.push('contacto3')
   colaContacto.push('contacto4')
-  // console.log('El proximo contacto a atender es', colaContacto.shift())   
+  console.log('El proximo contacto a atender es', colaContacto.shift())   
 }
 
 // Programación Funcional en JavaScript
@@ -216,7 +216,6 @@ const consultaHorasDoctores = async (id_doc) => {
     const horasTotales = Math.floor(tiempoTotalConsulta / 60);
     const minutosTotales = tiempoTotalConsulta % 60;
     console.log('El total de horas de consulta del doctor', id_doc, 'fue de', horasTotales, 'horas y', minutosTotales, 'minutos')
-
   } catch (error) {
     console.error("Error al consultar el tiempo de atención de doctores:", error.message);
   }
@@ -316,7 +315,7 @@ class Doctor{
     return `El doctor ${this.nombre} tiene ${this.anios_experiencia} años de experiencia en la especialidad de ${this.especialidad}`
   }
   calcularPacientesAtendidos(){
-    return this.pacientes.length;
+    return `El doctor ${this.nombre} ha atendido ${this.pacientes.length} pacientes`;
   }
 
   get aniosExperiencia() {
@@ -343,8 +342,8 @@ class Cirujano extends Doctor{
 }
 
 const cirjuano1 = new Cirujano('Pablo Arce' , 'Cirujano', 10);
-// console.log(cirjuano1.obtenerInformacion());
-// console.log(cirjuano1.calcularPacientesAtendidos());
+console.log(cirjuano1.obtenerInformacion());
+console.log(cirjuano1.calcularPacientesAtendidos());
 
 
 function iniciar() {
