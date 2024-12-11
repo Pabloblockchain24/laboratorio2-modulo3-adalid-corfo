@@ -1,21 +1,21 @@
-# Laboratorio 1 - Módulo 3 Adalid Corfo
+# Laboratorio 2 - Módulo 3 Adalid Corfo
 
 ## Descripción del Proyecto
 
-Este proyecto es un taller para el Módulo 3 del curso Adalid Corfo. Se trata de un sitio web simple que presenta un hospital médico con tres secciones principales: Home, Equipo Médico y Contacto. El objetivo es implementar un sitio web modular utilizando HTML, SCSS, CSS y JavaScript, se han aplicado media queries y modularización de estilos mediante el uso de SASS para una estructura más clara y mantenible, además se usa el framework de css Bootstrap para optimizar el desarrollo del proyecto, incorporando componentes como buttons, forms, grids y cards y JavaScript para manejar filtros y mostrar datos de manera dinámica.
+Este proyecto es el laboratorio 2 para el Módulo 3 del curso Adalid Corfo. Se trata de un sitio web que presenta un hospital médico con tres secciones principales: Home, Equipo Médico y Contacto. El objetivo es implementar un sitio web modular utilizando HTML, SCSS, CSS y JavaScript, se han aplicado media queries y modularización de estilos mediante el uso de SASS para una estructura más clara y mantenible, además se usa el framework de css Bootstrap para optimizar el desarrollo del proyecto, incorporando componentes como buttons, forms, grids y cards y JavaScript para manejar filtros y mostrar datos de manera dinámica.
 
 ## Instrucciones para Visualizar el Proyecto
 
 1. Clona el repositorio en tu máquina local:
 
     ```bash
-    git clone https://github.com/Pabloblockchain24/ejercicio-taller2-modulo3-adalid-corfo.git
+    git clone https://github.com/Pabloblockchain24/ejercicio-laboratorio2-modulo3-adalid-corfo.git
     ```
 
 2. Navega a la carpeta del proyecto:
 
     ```bash
-    cd laboratorio1-modulo3-adalid-corfo
+    cd laboratorio2-modulo3-adalid-corfo
     ```
 
 3. Instala las dependencias de SASS si aún no lo has hecho:
@@ -393,6 +393,31 @@ Este proyecto utiliza varios algoritmos clave para gestionar datos relacionados 
 ### 5. Clonación y Fusión
 **Operadores:** `...` (Spread)  
 - **Descripción:** Clona objetos y fusiona propiedades
+
+
+## Explicación implementación funciones funcionales.
+
+### Funciones funcionales ejecutadas
+
+#### consultaGastoPaciente
+Calcula el costo total de los servicios de un paciente en función del número de consultas realizadas y el precio de cada consulta, a través de la ejecución de una función currying
+
+#### consultaTiempoEspera
+Calcula el tiempo promedio de espera de un paciente a través de una funcion flecha basado en los tiempos de espera de sus citas agendadas.
+
+#### consultaHorasDoctores
+Calcula a través de una función recursiva llamada calcularHorasRecursivo el total de horas de consulta de un doctor en una semana.
+
+#### consultarDescuentoPacientes
+Calcula a través de una composición de funciones el precio final de las consultas de un paciente aplicando descuentos según la cantidad de citas realizadas.
+
+#### Imagen de funciones ejecutadas en la consola del navegador
+![Funciones funcionales ejecutadas](./assets/img/screenshot_consola.jpg)
+
+## Explicación uso de eventos y asincronía.
+
+
+## Detalles de las clases, herencia y polimorfismo.
 
 
 ## Créditos
