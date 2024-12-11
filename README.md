@@ -399,19 +399,19 @@ Este proyecto utiliza varios algoritmos clave para gestionar datos relacionados 
 
 ### Funciones funcionales ejecutadas
 
-#### consultaGastoPaciente
+**consultaGastoPaciente**
 Calcula el costo total de los servicios de un paciente en función del número de consultas realizadas y el precio de cada consulta, a través de la ejecución de una función currying
 
-#### consultaTiempoEspera
+**consultaTiempoEspera**
 Calcula el tiempo promedio de espera de un paciente a través de una funcion flecha basado en los tiempos de espera de sus citas agendadas.
 
-#### consultaHorasDoctores
+**consultaHorasDoctores**
 Calcula a través de una función recursiva llamada calcularHorasRecursivo el total de horas de consulta de un doctor en una semana.
 
-#### consultarDescuentoPacientes
+**consultarDescuentoPacientes**
 Calcula a través de una composición de funciones el precio final de las consultas de un paciente aplicando descuentos según la cantidad de citas realizadas.
 
-#### Imagen de funciones ejecutadas en la consola del navegador
+**Imagen de funciones ejecutadas en la consola del navegador**
 ![Funciones funcionales ejecutadas](./assets/img/screenshot_consola.jpg)
 
 ## Explicación uso de eventos y asincronía.
