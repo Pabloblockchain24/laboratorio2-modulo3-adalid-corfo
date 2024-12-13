@@ -1,21 +1,21 @@
-# Laboratorio 2 - Módulo 3 Adalid Corfo
+# Evaluación grupal - Módulo 3 Adalid Corfo
 
 ## Descripción del Proyecto
 
-Este proyecto es el laboratorio 2 para el Módulo 3 del curso Adalid Corfo. Se trata de un sitio web que presenta un hospital médico con tres secciones principales: Home, Equipo Médico y Contacto. El objetivo es implementar un sitio web modular utilizando HTML, SCSS, CSS y JavaScript, se han aplicado media queries y modularización de estilos mediante el uso de SASS para una estructura más clara y mantenible, además se usa el framework de css Bootstrap para optimizar el desarrollo del proyecto, incorporando componentes como buttons, forms, grids y cards y JavaScript para manejar filtros y mostrar datos de manera dinámica.
+Este proyecto es una evaluación grupal para el Módulo 3 del curso Adalid Corfo. Se trata de un sitio web que presenta un hospital médico con tres secciones principales: Home, Equipo Médico y Contacto. El objetivo es implementar un sitio web modular utilizando HTML, SCSS, CSS y JavaScript, se han aplicado media queries y modularización de estilos mediante el uso de SASS para una estructura más clara y mantenible, además se usa el framework de css Bootstrap para optimizar el desarrollo del proyecto, incorporando componentes como buttons, forms, grids y cards y JavaScript para manejar filtros y mostrar datos de manera dinámica.
 
-## Instrucciones para Visualizar el Proyecto
+## Instrucciones para ejecutar y probar el Proyecto
 
 1. Clona el repositorio en tu máquina local:
 
     ```bash
-    git clone https://github.com/Pabloblockchain24/ejercicio-laboratorio2-modulo3-adalid-corfo.git
+    git clone https://github.com/Pabloblockchain24/evaluacion-grupal-modulo3-adalid-corfo.git
     ```
 
 2. Navega a la carpeta del proyecto:
 
     ```bash
-    cd laboratorio2-modulo3-adalid-corfo
+    cd evaluacion-grupal-adalid-corfo
     ```
 
 3. Instala las dependencias de SASS si aún no lo has hecho:
@@ -339,37 +339,6 @@ doctores = doctores.filter(doctor => doctor.anios_experiencia >= parseInt(filtro
 doctores = doctores.filter(doctor => doctor.especialidad.toLowerCase().includes(filtroServicio.toLowerCase()));
 
 
-## Explicación de las estructuras de datos implementadas (arreglos, pilas, colas) y su utilidad en el proyecto.
-
-En este proyecto se utilizan distintas estructuras de datos (arreglos, pilas y colas) para gestionar y organizar información de manera eficiente. A continuación, se describe cada estructura, su implementación y utilidad en el proyecto.
-
-### Arreglos
-Los **arreglos** son la estructura de datos base en este proyecto, utilizados para almacenar listas de elementos como doctores, citas y contactos. Métodos como push, pop, shift y filter facilitan la adición, eliminación y búsqueda de elementos en la lista.
-
-Se utiliza un arreglo para almacenar citas médicas:
-const citas = [];
-agregarCita(citas, 'cita1');
-agregarCita(citas, 'cita2');
-
-### Pilas
-Las pilas son una estructura de datos LIFO (Last In, First Out), donde el último elemento que se agrega es el primero en salir. En el proyecto, se utilizan pilas para manejar las citas médicas.
-
-Ejemplo:
-function manejarPila() {
-  const citas = [];
-  agregarCita(citas, 'cita1');
-  console.log('La última cita agendada es:', citas[citas.length - 1]);
-}
-
-### Colas
-Las colas son una estructura de datos FIFO (First In, First Out), donde el primer elemento que se agrega es el primero en salir. Se implementa para gestionar los contactos en una lista de espera.
-
-Ejemplo:
-function manejarCola() {
-  const colaContacto = [];
-  colaContacto.push('contacto1');
-  console.log('El próximo contacto a atender es:', colaContacto.shift());
-}
 
 ## Descripción de los algoritmos implementados y su complejidad.
 Este proyecto utiliza varios algoritmos clave para gestionar datos relacionados con doctores. A continuación, se describen brevemente:
@@ -393,6 +362,8 @@ Este proyecto utiliza varios algoritmos clave para gestionar datos relacionados 
 ### 5. Clonación y Fusión
 **Operadores:** `...` (Spread)  
 - **Descripción:** Clona objetos y fusiona propiedades
+
+
 
 
 ## Explicación implementación funciones funcionales.
@@ -442,3 +413,134 @@ Este ejemplo ilustra cómo reutilizar y extender funcionalidades en JavaScript m
 ![Evento de un nuevo paciente](./assets/img/screenshot_clases.jpg)
 
 
+## Descripción de los datos manipulados con JSON y cómo se cargan en la interfaz.
+
+El sistema gestiona 4 archivos JSON que contienen la información necesaria para agendar y visualizar citas médicas. Estos archivos son:
+
+
+### Datos en Json
+**citas.json**: Contiene los detalles de las citas médicas programadas, incluyendo el identificador de la cita, paciente, doctor, fecha, hora agendada, hora atendida, tiempo de espera y valor de la consulta.
+
+**doctores.json**: Contiene la información de los doctores disponibles, incluyendo el identificador del doctor, nombre, especialidad, descripción, años de experiencia, disponibilidad, y las citas agendadas para cada uno.
+
+**pacientes.json**: Contiene la información de los pacientes, incluyendo el identificador del paciente, nombre, número de contacto y las citas agendadas por cada paciente.
+
+**servicios_medicos.json**: Contiene la información de los servicios medicos, incluyendo el nombre del servicio, descripción e imagen.
+
+### Fetch de datos JSON 
+
+Para cargar los datos en la interfaz, se realiza un fetch desde el frontend hacia los archivos JSON. Este proceso se puede implementar en JavaScript utilizando la función fetch() para obtener los archivos y procesarlos. El siguiente ejemplo muestra cómo obtener los datos de citas.json:
+
+async function fetchDoctores() {
+  try{
+    const response = await fetch('../assets/data/doctores.json'); 
+    if(!response.ok) throw new Error('Error al cargar los doctores');
+    const doctores = await response.json();
+    return doctores
+  } catch (error) {
+    console.error('Error al cargar los doctores:', error);
+  }  
+}
+
+Se repite la misma estructura para los 4 archivos JSON que se deben leer
+
+### Carga en la interfaz
+
+Una vez que los datos son obtenidos a través del fetch, estos se utilizan para actualizar el HTML en la interfaz gráfica.
+
+async function renderizarDoctores(doctores) {
+    const equipoContainer = document.getElementById('equipo-medico');
+    equipoContainer.innerHTML = '';
+    doctores.forEach((doctor) => {
+      const{
+        nombre,
+        imagen,
+        especialidad,
+        anios_experiencia,
+        descripcion,
+        informacion_adicional        
+      } = doctor
+
+      const cardHTML = `
+        <div class="col profesionales">
+          <div class="card" >
+            <img src="${imagen}" alt="${nombre}" class="card__image-Resizing" />
+            <div class="card-body">
+              <h5 class="card-title">${nombre}</h5>
+              <p class="card-text">${especialidad}</p>
+              <p class="card-text">${anios_experiencia} años de experiencia.</p>
+              <p class="card-text">${descripcion}</p>
+               <button 
+                  class="btn btn-primary obtener-info-btn" 
+                  data-info="${nombre} es especialista en ${especialidad} con ${anios_experiencia} años de experiencia. Contacto ${informacion_adicional.contacto}" >
+                  Obtener más información
+              </button>            
+            </div>
+          </div>
+        </div>
+      `;
+      equipoContainer.innerHTML += cardHTML;
+    });
+
+    equipoContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('obtener-info-btn')) {
+          const additionalInfo = event.target.getAttribute('data-info');
+          alert(additionalInfo);
+      }
+  });
+}
+
+Esta estructura se repite para renderizar otra informaciones contenidos en los otros 3 archivos JSON. 
+
+## Explicación de algoritmos y de las estructuras de datos implementadas (arreglos, pilas, colas) y su utilidad en el proyecto.
+
+En este proyecto se utilizan distintas estructuras de datos (arreglos, pilas y colas) para gestionar y organizar información de manera eficiente. A continuación, se describe cada estructura, su implementación y utilidad en el proyecto. Y además algoritmos de ordenamiento y busqueda 
+
+
+### Algoritmos
+
+En este proyecto, se implementa un algoritmo de ordenamiento y búsqueda para filtrar y organizar una lista de doctores basada en criterios como la experiencia y la especialidad.
+
+1. Filtrado:
+Filtrado por especialidad: Los doctores pueden ser filtrados según la especialidad que tengan (por ejemplo, "Cirugía", "Consultas", "Emergencias"). 
+Filtrado por años de experiencia: Los doctores también pueden ser filtrados por la cantidad de años de experiencia que tengan.
+
+2. Ordenamiento:
+Una vez aplicados los filtros, se utiliza el algoritmo de ordenamiento por años de experiencia para organizar la lista de doctores de mayor a menor experiencia. Esto se realiza mediante el método sort()
+
+El código utilizado para el ordenamiento es el siguiente:
+
+doctores.sort((a, b) => b.anios_experiencia - a.anios_experiencia);
+
+Este algoritmo compara los valores de anios_experiencia de cada doctor en la lista, y coloca primero a aquellos con más experiencia.
+
+
+### Arreglos
+Los **arreglos** son la estructura de datos base en este proyecto, utilizados para almacenar listas de elementos como doctores, citas y contactos. Métodos como push, pop, shift y filter facilitan la adición, eliminación y búsqueda de elementos en la lista.
+
+Se utiliza un arreglo para almacenar citas médicas:
+const citas = [];
+agregarCita(citas, 'cita1');
+agregarCita(citas, 'cita2');
+
+### Pilas
+Las pilas son una estructura de datos LIFO (Last In, First Out), donde el último elemento que se agrega es el primero en salir. En el proyecto, se utilizan pilas para manejar las citas médicas.
+
+Ejemplo:
+function manejarPila() {
+  const citas = [];
+  agregarCita(citas, 'cita1');
+  console.log('La última cita agendada es:', citas[citas.length - 1]);
+}
+
+### Colas
+Las colas son una estructura de datos FIFO (First In, First Out), donde el primer elemento que se agrega es el primero en salir. Se implementa para gestionar los contactos en una lista de espera.
+
+Ejemplo:
+function manejarCola() {
+  const colaContacto = [];
+  colaContacto.push('contacto1');
+  console.log('El próximo contacto a atender es:', colaContacto.shift());
+}
+
+## Explicación de las funciones y clases creadas, y el manejo de eventos.

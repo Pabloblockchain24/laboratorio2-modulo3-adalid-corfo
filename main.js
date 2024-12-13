@@ -25,9 +25,10 @@ async function renderizarDoctores(doctores) {
         imagen,
         especialidad,
         anios_experiencia,
-        descripcion        
+        descripcion,
+        informacion_adicional        
       } = doctor
-      console.log('El doctor a renderizar usando desestructuring es', doctor)
+
       const cardHTML = `
         <div class="col profesionales">
           <div class="card" >
@@ -37,12 +38,24 @@ async function renderizarDoctores(doctores) {
               <p class="card-text">${especialidad}</p>
               <p class="card-text">${anios_experiencia} años de experiencia.</p>
               <p class="card-text">${descripcion}</p>
+               <button 
+                  class="btn btn-primary obtener-info-btn" 
+                  data-info="${nombre} es especialista en ${especialidad} con ${anios_experiencia} años de experiencia. Contacto ${informacion_adicional.contacto}" >
+                  Obtener más información
+              </button>            
             </div>
           </div>
         </div>
       `;
       equipoContainer.innerHTML += cardHTML;
     });
+
+    equipoContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('obtener-info-btn')) {
+          const additionalInfo = event.target.getAttribute('data-info');
+          alert(additionalInfo);
+      }
+  });
 }
 
 async function filtrarEquipo(doctores) {
@@ -78,7 +91,6 @@ async function filtrarEquipo(doctores) {
 }
 
 // Aqui crearemos funciones para agregar, eliminar y buscar doctores
-
 function agregarDoctor(doctores, nuevoDoctor) {
   doctores.push(nuevoDoctor);
   console.log('Agregue doctor')
@@ -124,20 +136,46 @@ async function cargarDoctores() {
   }
 }
 
-// Aqui crearemos citas
-function agregarCita(citas, nuevaCita) {
-  citas.push(nuevaCita);
+//Leemos citas
+async function fetchCitas() {
+  try{
+    const response = await fetch('../assets/data/citas.json'); 
+    const pacientes = await response.json();
+    return pacientes
+  } catch (error) {
+    console.error('Error al cargar los pacientes:', error);
+  }  
+}
+
+async function createCita(nuevaCita){
+  const citas = await fetchCitas();  
+  citas.push(nuevaCita)
   console.log('Agregue cita', nuevaCita)
 }
 
-function manejarPila() {
-  const citas = [];
-  agregarCita(citas, 'cita1')
-  agregarCita(citas, 'cita2')
-  agregarCita(citas, 'cita3')
-  agregarCita(citas, 'cita4')
-  agregarCita(citas, 'cita5')
+let nuevaReserva =  {
+  "id_cita": "cita_99",
+  "id_paciente": "pac_15",
+  "id_doctor": "doc_25",
+  "fecha": "12-12-2024",
+  "hora_agendada": "11:00",
+  "hora_atendida": "13:30",
+  "tiempo_espera": 40,
+  "valor_consulta": 50000
+}
 
+createCita(nuevaReserva);
+
+async function deleteCita(id_cita) {
+  const citas = await fetchCitas();  
+  const nuevoArray = citas.filter(cita => cita.id_cita != id_cita)
+  console.log('Cita borrada correctamente. Nuevo array es:', nuevoArray )
+}
+
+deleteCita('cita_02')
+
+async function manejarPila() {
+  const citas = await fetchCitas();  
   console.log('La ultima agendada es', citas[citas.length - 1])
   console.log('La proxima cita a atender es', citas.shift())
 }
@@ -147,7 +185,6 @@ function manejarCola(){
   colaContacto.push('contacto1')
   colaContacto.push('contacto2')
   colaContacto.push('contacto3')
-  colaContacto.push('contacto4')
   console.log('El proximo contacto a atender es', colaContacto.shift())   
 }
 
@@ -273,14 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
   
-  document.addEventListener("nuevoPaciente", (event) => {
-    const { nombre, id_pac } = event.detail; 
-    alert(`Nuevo paciente llegado: 
-      Nombre: ${nombre} 
-      Id: ${id_pac}`)
-      ;
-  });
-  
+ 
   setTimeout(() => {
     document.dispatchEvent(nuevoPacienteEvent);
   }, 5000);
@@ -299,23 +329,31 @@ async function fetchDoctores() {
   }  
 }
 
-// Programación Orientada a Objetos en JavaScript (2.5 puntos)
-//Implementa una clase Doctor con las propiedades nombre, especialidad, y años de experiencia. Añade un método para mostrar la información de cada doctor y otro para calcular el total de pacientes atendidos por el doctor.
-//Implementa el encapsulamiento en la clase, protegiendo la propiedad de años de experiencia mediante un getter y un setter.
-
+// Programación Orientada a Objetos en JavaScript
+//Crea una clase Doctor con subclases como Cirujano o Pediatra, aplicando encapsulación, herencia, y polimorfismo.
+//Implementa métodos para calcular costos de consulta, gestionar disponibilidad, etc.
 class Doctor{
-  constructor(nombre, especialidad, anios_experiencia){
+  constructor(id_doc, nombre, especialidad, descripcion, imagen, anios_experiencia, disponibilidad){
+    this.id_doc = id_doc
     this.nombre = nombre;
     this.especialidad = especialidad;
+    this.descripcion = descripcion;
+    this.imagen = imagen;
     this._anios_experiencia = anios_experiencia;
-    this.pacientes = ['pac_01', 'pac_02', 'pac_03'];
+    this.disponibilidad = disponibilidad;
+    this.informacion_adicional = [];
+    this.citas_agendadas = []
   }
 
   obtenerInformacion(){
     return `El doctor ${this.nombre} tiene ${this.anios_experiencia} años de experiencia en la especialidad de ${this.especialidad}`
   }
-  calcularPacientesAtendidos(){
-    return `El doctor ${this.nombre} ha atendido ${this.pacientes.length} pacientes`;
+  calcularCostosConsulta(){
+    totalConsulta = this.citas_agendadas.reduce((total,cita) => total + cita.valor_consulta, 0)
+    return `La consulta tiene un costo total de $${totalConsulta}.`;
+  }
+  gestionarDisponibilidad(nuevaDisponibilidad){
+    this.disponibilidad = nuevaDisponibilidad;
   }
 
   get aniosExperiencia() {
@@ -325,6 +363,8 @@ class Doctor{
   set aniosExperiencia(nuevosAnios) {
     this.anios_experiencia = nuevosAnios; 
   }
+
+
 }
 // Crea una subclase de Doctor, por ejemplo Cirujano, que extienda las funcionalidades de la clase base.
 // Usa el polimorfismo para sobrescribir un método en la subclase Cirujano que calcule el número de operaciones realizadas en lugar de consultas
@@ -338,15 +378,52 @@ class Cirujano extends Doctor{
   obtenerInformacion(){
     return `El cirujano ${this.nombre} ha hecho las siguientes cirujias: ${this.cirujias}`
   }
-
 }
 
 const cirjuano1 = new Cirujano('Pablo Arce' , 'Cirujano', 10);
 console.log(cirjuano1.obtenerInformacion());
-console.log(cirjuano1.calcularPacientesAtendidos());
+
+// Lectura y renderizado de servicios medicos en el home   
+async function cargarServiciosMedicos() {
+  try{
+    const response = await fetch('../assets/data/servicios_medicos.json'); 
+    if(!response.ok) throw new Error('Error al cargar servicios medicos');
+    const servicios_medicos = await response.json();
+    renderizarServicios(servicios_medicos);
+  } catch (error) {
+    console.error('Error al cargar los servicios_medicos:', error);
+  }  
+}
+
+async function renderizarServicios(servicios) {
+  const container = document.getElementById('servicios');
+  container.innerHTML = '';
+
+  servicios.forEach(servicio => {
+    const { nombre_servicio, descripcion, imagen } = servicio; 
+    const cardServicio = `
+     <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <div class="card" style="width: 18rem">
+        <img
+          src="${imagen}"
+          alt="${nombre_servicio}"
+          width="150px"
+        />
+      <div class="card-body">
+        <h5 class="card-title">${nombre_servicio}</h5>
+        <p class="card-text">${descripcion}</p>
+      </div>
+    </div>
+  </div>
+  `;
+  container.innerHTML += cardServicio;
+
+  })
+};
 
 
 function iniciar() {
+  cargarServiciosMedicos();
   cargarDoctores();
   manejarPila();
   manejarCola();

@@ -18,7 +18,8 @@
         "hora_agendada": "10:00",
         "hora_atendida": "10:30",
         "tiempo_espera": 30,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
       },
       {
         "id_pac": "pac_04",
@@ -26,7 +27,8 @@
         "hora_agendada": "13:00",
         "hora_atendida": "13:30",
         "tiempo_espera": 30,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
     },
       {
         "id_pac": "pac_05",
@@ -34,7 +36,8 @@
         "hora_agendada": "14:00",
         "hora_atendida": "14:25",
         "tiempo_espera": 25,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
       }
     ]
   },
@@ -57,14 +60,16 @@
         "hora_agendada": "17:00",
         "hora_atendida": "17:30",
         "tiempo_espera": 30,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
       },{
         "id_pac": "pac_03",
         "fecha": "12-12-2024",
         "hora_agendada": "09:00",
         "hora_atendida": "09:10",
         "tiempo_espera": 10,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
       },
       {
         "id_pac": "pac_04",
@@ -72,7 +77,8 @@
         "hora_agendada": "09:00",
         "hora_atendida": "09:20",
         "tiempo_espera": 20,
-        "tiempo_consulta": 60
+        "tiempo_consulta": 60,
+        "valor_consulta": 30000
       }  
       
     ]

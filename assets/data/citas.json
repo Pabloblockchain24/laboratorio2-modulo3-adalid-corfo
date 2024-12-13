@@ -1,0 +1,73 @@
+[
+    {
+      "id_cita": "cita_01",
+      "id_paciente": "pac_01",
+      "id_doctor": "doc_01",
+      "fecha": "09-12-2024",
+      "hora_agendada": "10:00",
+      "hora_atendida": "10:30",
+      "tiempo_espera": 30,
+      "valor_consulta": 30000
+    },
+    {
+      "id_cita": "cita_02",
+      "id_paciente": "pac_02",
+      "id_doctor": "doc_03",
+      "fecha": "09-12-2024",
+      "hora_agendada": "11:00",
+      "hora_atendida": "11:30",
+      "tiempo_espera": 30,
+      "valor_consulta": 30000
+    },
+    {
+      "id_cita": "cita_03",
+      "id_paciente": "pac_02",
+      "id_doctor": "doc_05",
+      "fecha": "11-12-2024",
+      "hora_agendada": "16:00",
+      "hora_atendida": "16:30",
+      "tiempo_espera": 30,
+      "valor_consulta": 35000
+    },
+    {
+      "id_cita": "cita_04",
+      "id_paciente": "pac_03",
+      "id_doctor": "doc_05",
+      "fecha": "09-12-2024",
+      "hora_agendada": "12:00",
+      "hora_atendida": "12:30",
+      "tiempo_espera": 30,
+      "valor_consulta": 35000
+    },
+    {
+      "id_cita": "cita_05",
+      "id_paciente": "pac_03",
+      "id_doctor": "doc_02",
+      "fecha": "12-12-2024",
+      "hora_agendada": "09:00",
+      "hora_atendida": "09:10",
+      "tiempo_espera": 10,
+      "valor_consulta": 32000
+    },
+    {
+      "id_cita": "cita_06",
+      "id_paciente": "pac_04",
+      "id_doctor": "doc_02",
+      "fecha": "10-12-2024",
+      "hora_agendada": "09:00",
+      "hora_atendida": "09:20",
+      "tiempo_espera": 20,
+      "valor_consulta": 32000
+    },
+    {
+      "id_cita": "cita_07",
+      "id_paciente": "pac_05",
+      "id_doctor": "doc_01",
+      "fecha": "10-12-2024",
+      "hora_agendada": "14:00",
+      "hora_atendida": "14:25",
+      "tiempo_espera": 25,
+      "valor_consulta": 30000
+    }
+  ]
+  
